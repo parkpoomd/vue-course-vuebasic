@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 01</title>
+
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="div-app">
+		{{ title }}
+	</div>
+
+	<script>
+		
+	var vm = new Vue({
+		el: "#div-app",
+		data: {
+			title: "Hello VueJS",
+			powerBy: "Parkpoom Pongsawat"
+		}
+	});
+
+	</script>
+</body>
+</html>

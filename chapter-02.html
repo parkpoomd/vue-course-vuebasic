@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter-02</title>
+
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="div-app">
+		<h2>{{ title }}</h2>
+		<hr />
+		<!-- <input type="text" id="txtName" value="" onchange="setName()" />
+		<span id="sp-hello"></span> -->
+		<input type="text" v-model="name">
+		<span>Hello {{name}}</span>
+		<br />
+		<br />
+		<textarea cols="30" rows="10" v-model="article"></textarea>
+		<div>
+			{{article}}
+		</div>
+		<br />
+		Code:
+		<select v-model="Customer.code">
+			<option value="C-001">C-001</option>
+			<option value="C-002">C-002</option>
+			<option value="C-003">C-003</option>
+		</select>
+		<br />
+		<label for="firstname">Firstname</label>
+		<input type="text" v-model="Customer.firstname">
+		<label for="lastname">Lastname</label>
+		<input type="text" v-model="Customer.lastname">
+		<div>
+			<h3>Customer Data</h3>
+			ID: {{Customer.id}}<br />
+			Code: {{Customer.code}}<br />
+			Name: {{Customer.firstname}} {{Customer.lastname}}
+		</div>
+	</div>
+
+	<script>
+		/*function setName(){
+			var txtName = document.getElementById("txtName");
+			var sp = document.getElementById("sp-hello");
+
+			sp.innerHTML = "Hello " + txtName.value;
+		}*/
+		var vm = new Vue({
+			el: "#div-app",
+			data: {
+				title: "Chapter-02, V-Model",
+				name: "",
+				article: "",
+				Customer: {
+					id: 1,
+					code: "C-003",
+					firstname: "Parkpoom",
+					lastname: "Pongsawat"
+				}
+			}
+		});
+	</script>
+</body>
+</html>

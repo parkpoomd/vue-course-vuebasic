@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter-07</title>
+
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="div-app">
+		<div v-for="customer in customers">
+			{{customer.id}} {{customer.name | toUpper}}
+		</div>
+	</div>
+	<hr />
+	<div id="div-app2">
+		<div v-for="customer in customers">
+			{{customer.id}} {{customer.name | toUpper}}
+		</div>
+	</div>
+	<hr />
+	<div id="div-app3">
+		<div v-for="customer in customers">
+			{{customer.id}} {{customer.name | toLower}}
+		</div>
+	</div>
+	<hr />
+	<div id="div-app4">
+		<div v-for="customer in customers">
+			{{customer.id | customerCode}} {{customer.name | capitalize}}
+		</div>
+	</div>
+	<hr />
+	<div id="div-app5">
+		<div v-for="customer in customers">
+			{{customer.id}} {{customer.name}}
+		</div>
+	</div>
+	<hr />
+
+	<script>
+		Vue.filter("toUpper", function(data, p1, p2){
+			if(p1==undefined) p1="";
+			if(p2==undefined) p2="";
+
+			return data.toUpperCase();
+		});
+		var vm = new Vue({
+			el: "#div-app",
+			data: {
+				customers: [
+				{ id: 4, name: "aaaa"},
+				{ id: 3, name: "bbbb"},
+				{ id: 2, name: "cccc"},
+				{ id: 1, name: "abc"}
+				]
+			}
+		});
+		var vm = new Vue({
+			el: "#div-app2",
+			data: {
+				customers: [
+				{ id: 4, name: "ffff"},
+				{ id: 3, name: "gggg"},
+				{ id: 2, name: "hhhh"},
+				{ id: 1, name: "jjjj"}
+				]
+			}
+		});
+		var vm = new Vue({
+			el: "#div-app3",
+			data: {
+				customers: [
+				{ id: 4, name: "ZZZZZZZZZZ"},
+				{ id: 3, name: "XXXXXXXXXX"}
+				]
+			},
+			filters: {
+				toLower: function(data){
+					return data.toLowerCase();
+				}
+			}
+		});
+		var vm = new Vue({
+			el: "#div-app4",
+			data: {
+				customers: [
+				{ id: 4, name: "RRRR"},
+				{ id: 3, name: "TTTT"}
+				]
+			},
+			filters: {
+				toLower: function(data){
+					return data.toLowerCase();
+				},
+				capitalize: function(data){
+					var result = data.substring(0, 1).toUpperCase() + data.substring(1, data.length).toLowerCase();
+					return result;
+				},
+				customerCode: function(data){
+					return "C-" + data;
+				}
+			}
+		});
+		var vm = new Vue({
+			el: "#div-app5",
+			data: {
+				customers: [
+				{ id: "001", name: "Parkpoom", groupID: 1},
+				{ id: "002", name: "Sirikarn", groupID: 1},
+				{ id: "003", name: "Kornvarin", groupID: 2},
+				{ id: "004", name: "Verachon", groupID: 2}
+				]
+			}
+		});
+	</script>
+</body>
+</html>

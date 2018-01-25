@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter-05</title>
+
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="div-app">
+		{{firstname}} {{lastname}}
+	</div>
+	<hr />
+	<div id="div-app-2">
+		{{firstname[0]}} {{lastname[0]}}<br />
+		{{firstname[1]}} {{lastname[1]}}
+	</div>
+	<hr />
+	<div id="div-app-3">
+		{{firstname[0]}} {{lastname[0]}}<br />
+		{{firstname[1]}} {{lastname[1]}}
+	</div>
+	<hr />
+	<div id="div-app-4">
+		{{firstname[0]}} {{lastname[0]}}<br />
+		{{firstname[1]}} {{lastname[1]}}<br />
+		<button v-on:click="loadData()">Click Load Data</button>
+	</div>
+	<hr />
+	<div id="div-app-5">
+		{{firstname}} {{lastname}}<br />
+		{{fullname}}
+	</div>
+	<hr />
+	<div id="div-app-6">
+		{{firstname}} {{lastname}}<br />
+		{{fullname}}
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el: "#div-app",
+			data: {
+				firstname: "Parkpoom",
+				lastname: "Pongsawat"
+			},
+			methods: {
+
+			},
+			computed: {
+
+			},
+			mount: function(){
+
+			},
+			components: {
+
+			},
+			filters: {
+
+			}
+		});
+		var vm2 = new Vue({
+			el: "#div-app-2",
+			data: {
+				firstname: [],
+				lastname: []
+			},
+			mounted: function(){
+				this.firstname.push("Parkpoom");
+				this.lastname.push("Pongsawat");
+
+				this.firstname.push("Sirikarn");
+				this.lastname.push("Pongsawat");
+			}
+		});
+		var vm3 = new Vue({
+			el: "#div-app-3",
+			data: {
+				firstname: [],
+				lastname: []
+			},
+			methods: {
+				loadData: function(){
+					this.firstname.push("Parkpoom");
+					this.lastname.push("Pongsawat");
+
+					this.firstname.push("Sirikarn");
+					this.lastname.push("Pongsawat");
+				}
+			},
+			mounted: function(){
+				this.loadData();
+			}
+		});
+		var vm4 = new Vue({
+			el: "#div-app-4",
+			data: {
+				firstname: [],
+				lastname: []
+			},
+			methods: {
+				loadData: function(){
+					this.firstname.push("Parkpoom");
+					this.lastname.push("Pongsawat");
+
+					this.firstname.push("Sirikarn");
+					this.lastname.push("Pongsawat");
+				}
+			},
+			mounted: function(){
+				//this.loadData();
+			}
+		});
+		var vm5 = new Vue({
+			el: "#div-app-5",
+			data: {
+				firstname: "",
+				lastname: ""
+			},
+			methods: {
+				loadData: function(){
+					this.firstname = ("Parkpoom");
+					this.lastname = ("Pongsawat");
+				}
+			},
+			computed: {
+				fullname: function() {
+					return this.firstname + " " + this.lastname;
+				}
+			},
+			mounted: function(){
+				this.loadData();
+			}
+		});
+		var data = {
+				firstname: "",
+				lastname: ""
+			}
+		var methods = {
+			loadData: function(){
+				this.firstname = ("Parkpoom");
+				this.lastname = ("Pongsawat");
+			}
+		}
+		var vm6 = new Vue({
+			el: "#div-app-6",
+			data: data,
+			methods: methods,
+			computed: {
+				fullname: function() {
+					return this.firstname + " " + this.lastname;
+				}
+			},
+			mounted: function(){ // ready
+				this.loadData();
+			}
+		});
+	</script>
+</body>
+</html>

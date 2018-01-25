@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter-05</title>
+
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="div-app">
+		<div v-for="customer in customers">
+			{{customer.code}} {{customer.name}}
+		</div>
+	</div>
+	<hr />
+	<div id="div-app2">
+		<table border="1px" width="100%">
+			<thead>
+				<th>No</th>
+				<th>Code</th>
+				<th>Name</th>
+				<th>Order</th>
+			</thead>
+			<tbody>
+				<tr v-for="(customer, index) in customers">
+					<td>{{index + 1}}</td>
+					<td>{{customer.code}}</td>
+					<td>{{customer.name}}</td>
+					<td>
+						<table>
+							<tbody>
+								<tr v-for="order in customer.orders">
+									<td>{{order.order_on}}</td>
+									<td>{{order.total}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<hr />
+	<div id="div-app3">
+		<table border="1px" width="100%">
+			<thead>
+				<th>No</th>
+				<th>Code</th>
+				<th>Name</th>
+				<th>Order</th>
+			</thead>
+			<tbody>
+				<tr v-for="(customer, index) in customers">
+					<td>{{index + 1}}</td>
+					<td>{{customer.code}}</td>
+					<td>{{customer.name}}</td>
+					<td>Order Count {{customer.orders.length}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el: "#div-app",
+			data: {
+				customers: []
+			},
+			mounted: function(){
+				this.customers.push({ code: "c-001", name: "Parkpoom Pongsawat"});
+				this.customers.push({ code: "c-002", name: "Sirikarn Pongsawat"});
+				this.customers.push({ code: "c-003", name: "Kornvarin Pongsawat"});
+			}
+		});
+		var vm = new Vue({
+			el: "#div-app2",
+			data: {
+				customers: []
+			},
+			mounted: function(){
+				this.customers.push({ code: "c-001", name: "Parkpoom Pongsawat", orders: [
+					{order_on: "order001", total: 500},
+					{order_on: "order002", total: 1500},
+					{order_on: "order003", total: 2500}]});
+				this.customers.push({ code: "c-002", name: "Sirikarn Pongsawat", orders: []});
+				this.customers.push({ code: "c-003", name: "Kornvarin Pongsawat", orders: []});
+			}
+		});
+		var vm = new Vue({
+			el: "#div-app3",
+			data: {
+				customers: []
+			},
+			mounted: function(){
+				this.customers.push({ code: "c-001", name: "Parkpoom Pongsawat", orders: [
+					{order_on: "order001", total: 500},
+					{order_on: "order002", total: 1500},
+					{order_on: "order003", total: 2500}]});
+				this.customers.push({ code: "c-002", name: "Sirikarn Pongsawat", orders: []});
+				this.customers.push({ code: "c-003", name: "Kornvarin Pongsawat", orders: []});
+			}
+		});
+	</script>
+</body>
+</html>

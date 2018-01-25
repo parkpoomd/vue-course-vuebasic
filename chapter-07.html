@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter-07</title>
+
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="div-app">
+		<div v-for="customer in customers" v-if="customer.groupID=1">
+			ID : {{customer.id}} Name: {{customer.name}}
+		</div>
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el: "#div-app",
+			data: {
+				customers: [
+				{ id: "001", name: "Parkpoom", groupID: 1},
+				{ id: "002", name: "Sirikarn", groupID: 1},
+				{ id: "003", name: "Kornvarin", groupID: 2},
+				{ id: "004", name: "Verachon", groupID: 2}
+				]
+			}
+		});
+	</script>
+</body>
+</html>

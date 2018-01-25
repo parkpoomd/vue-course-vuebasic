@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter-03</title>
+
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="div-app">
+		<!-- <button onclick="clickMe()">Click Me</button> -->
+		<button v-on:click="clickMe()">Click Me</button>
+		<input type="text" v-on:keydown="keydown()" v-model="name">
+		<br />
+		<img src="" alt="" style="width: 100px; height: 100px; background-color: gray;" 
+			v-on:mouseover="mouseover()"
+			v-on:mouseout="mouseout()"
+			v-on:click="message='Click'">
+			<div>{{message}}</div>
+	</div>
+
+	<script>
+		/*function clickMe(){
+			alert("Click Me Now");
+		}*/
+		var vm = new Vue({
+			el: "#div-app",
+			data: {
+				name: "",
+				message: ""
+			},
+			methods: {
+				clickMe: function(){
+					alert("Click");
+				},
+				keydown: function(){
+					console.log("keydown");
+				},
+				mouseover: function(){
+					this.message = "mouseover";
+				},
+				mouseout: function(){
+					this.message = "mouseout";
+				}
+			}
+		});
+	</script>
+</body>
+</html>
